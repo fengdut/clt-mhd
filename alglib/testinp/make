@@ -1,2 +1,0 @@
-set -v
-g++   -I../src ../src/*.cpp  test.cpp -o test
