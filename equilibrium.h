@@ -2,23 +2,28 @@
 #define _EQUILIBRIUM_
 
 #include"MHDType.h"
+#include"Mesh.h"
 
+//2 D equilibrium
 class Equilibrium
 {
 public:
-Equilibrium();
-~Equilibrium();
+	Equilibrium();
+	~Equilibrium();
+
+	int ReadNova();
+	int ReadNovaqpg(int iPsi,int &nPsi, double *pPsi, double *pq, double *pP, double * pg);
+
+	void WriteEqu();
 
 private:
-double m_a;
-double m_R0;
-double m_Rx;
-
-double m_Zmax;
-double m_Rmax;
-double m_Rmin;
-
-MHDType m_MHDequ;
+	double m_Raxis;
+	int m_mPsi;
+	int m_mTheta;
+	Mesh m_mesh;
+	int m_mR;
+	int m_mZ;
+	MHDType m_MHDequ;
 
 };
 

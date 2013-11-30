@@ -22,17 +22,6 @@ ostream& operator<<(ostream& os, const vector<T>& v)
     return os;
 }
 
-int getmeshconfig(int ac, char * av[],int& nR, int& nZ, int& nPhi);
-
-
-int main(int ac, char* av[])
-{
-	int nR=1,nZ=1,nPhi=1;
-	getmeshconfig(ac, av, nR, nZ, nPhi);
-        cout << "nR: " << nR<<", nZ: "<<nZ<<", nPhi: "<<nPhi << "\n";  
-	return 0;
-}
-
 int getmeshconfig(int ac, char * av[],int& nR, int& nZ, int& nPhi)
 {
     try {
@@ -115,4 +104,6 @@ int getmeshconfig(int ac, char * av[],int& nR, int& nZ, int& nPhi)
         cout << e.what() << "\n";
         return 1;
     }    
+    return 0;
 }
+

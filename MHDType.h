@@ -1,21 +1,16 @@
 #ifndef _MHDTYPE_H
 #define _MHDTYPE_H
 
-struct MeshType
-{
-	int mR;
-	int mZ;
-	int mPhi;
-	double * R;
-	double * dR;
-	double * Z;
-	double * dZ;
-	double * Phi;
-	double * zPhi;
-};
 
-struct MHDType
+class MHDType
 {
+public:
+	MHDType();
+	MHDType(int NT);
+	~MHDType();
+	void SetNT(int NT);
+public:
+	int m_NT; //total grid number;
 	double * rho;
 	double * p;
 	double * vR;
@@ -27,19 +22,10 @@ struct MHDType
 	double * JR;
 	double * JZ;
 	double * JPhi;
+	double * Psi;
 };
 
 
-class Mesh
-{
-public:
-	Mesh();
-	Mesh(char * filename);
-	~Mesh();
-private:
-MeshType m_meshdata;
-	
-};
 
 #endif
 

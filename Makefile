@@ -1,32 +1,33 @@
 PRGM = CLT-MHD
 
 CC = g++
+
 CPPFLAGS =
 LDFLAGS = 
-CFLAGS = -Wall -ggdb3
-COMPILE = $(CC) $(CPPFLAGS) $(CFLAGS) -c
-LINKCC = $(CC) $(LDFLAGS)
+CFLAGS = -Wall -ggdb3 
+BOOST = -I$(BOOST_INCLUDE) -L$(BOOST_LIB) -lboost_program_options
+ALGLIB	=	alglib/src
+
+
+COMPILE = $(CC) $(CPPFLAGS) $(CFLAGS)  -I$(BOOST_INCLUDE) -I$(ALGLIB) -c 
+LINKCC = $(CC) $(LDFLAGS) $(BOOST) 
 
 LIBA = 
 
-SRCS := $(wildcard *.cxx)
-DEPS := $(patsubst %.cxx,%.d,$(SRCS))
-OBJS := $(patsubst %.cxx,%.o,$(SRCS))
+SRCS := $(wildcard *.cpp)
+OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
 all:$(PRGM)
 
-$(PRGM):$(OBJS) $(DEPS)
-	$(LINKCC) $(OBJS) $(LIBA) -o $(PRGM)
+$(PRGM):$(OBJS) 
+	$(LINKCC) $(OBJS) $(LIBA) $(ALGLIB)/*.o -o $(PRGM)
 
-%.d:%.cxx
-	$(CC) -MM $(CPPFLAGS) $< > $@
-
-%.o:%.cxx
+%.o:%.cpp
 	$(COMPILE) $< -o $@
 
 .PHONY:clean
 clean:
-	rm -f $(OBJS) $(DEPS) $(PRGM)
+	rm -f $(OBJS) $(PRGM)
 
 explain:
 	@echo "The information represents in the program:"
@@ -37,4 +38,3 @@ explain:
 depend:$(DEPS)
 	@echo "Dependencies are now up-to-date"
 
--include $(DEPS)
