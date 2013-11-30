@@ -1,0 +1,362 @@
+alglibinternal.h:#ifndef _alglibinternal_pkg_h
+alglibinternal.h:#define _alglibinternal_pkg_h
+alglibinternal.h:namespace alglib_impl
+alglibinternal.h:namespace alglib
+alglibinternal.h:namespace alglib_impl
+alglibmisc.h:#ifndef _alglibmisc_pkg_h
+alglibmisc.h:#define _alglibmisc_pkg_h
+alglibmisc.h:#include "alglibinternal.h"
+alglibmisc.h:namespace alglib_impl
+alglibmisc.h:namespace alglib
+alglibmisc.h:    alglib_impl::hqrndstate* c_ptr();
+alglibmisc.h:    alglib_impl::hqrndstate* c_ptr() const;
+alglibmisc.h:    alglib_impl::hqrndstate *p_struct;
+alglibmisc.h:    alglib_impl::kdtree* c_ptr();
+alglibmisc.h:    alglib_impl::kdtree* c_ptr() const;
+alglibmisc.h:    alglib_impl::kdtree *p_struct;
+alglibmisc.h:alglib::complex xdebugc1sum(const complex_1d_array &a);
+alglibmisc.h:alglib::complex xdebugc2sum(const complex_2d_array &a);
+alglibmisc.h:namespace alglib_impl
+ap.h:namespace alglib_impl
+ap.h:namespace alglib
+ap.h:typedef alglib_impl::ae_int_t ae_int_t;
+ap.h:    alglib_impl::ae_complex*       c_ptr();
+ap.h:    const alglib_impl::ae_complex* c_ptr() const;
+ap.h:const alglib::complex operator/(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const bool operator==(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const bool operator!=(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator+(const alglib::complex& lhs);
+ap.h:const alglib::complex operator-(const alglib::complex& lhs);
+ap.h:const alglib::complex operator+(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator+(const alglib::complex& lhs, const double& rhs);
+ap.h:const alglib::complex operator+(const double& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator-(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator-(const alglib::complex& lhs, const double& rhs);
+ap.h:const alglib::complex operator-(const double& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator*(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator*(const alglib::complex& lhs, const double& rhs);
+ap.h:const alglib::complex operator*(const double& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator/(const alglib::complex& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator/(const double& lhs, const alglib::complex& rhs);
+ap.h:const alglib::complex operator/(const alglib::complex& lhs, const double& rhs);
+ap.h:double abscomplex(const alglib::complex &z);
+ap.h:alglib::complex conj(const alglib::complex &z);
+ap.h:alglib::complex csqr(const alglib::complex &z);
+ap.h:void setnworkers(alglib::ae_int_t nworkers);
+ap.h:alglib::complex vdotproduct(const alglib::complex *v0, ae_int_t stride0, const char *conj0, const alglib::complex *v1, ae_int_t stride1, const char *conj1, ae_int_t n);
+ap.h:alglib::complex vdotproduct(const alglib::complex *v1, const alglib::complex *v2, ae_int_t N);
+ap.h:void vmove(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex* vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n);
+ap.h:void vmove(alglib::complex *vdst, const alglib::complex* vsrc, ae_int_t N);
+ap.h:void vmoveneg(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex* vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n);
+ap.h:void vmoveneg(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N);
+ap.h:void vmove(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex* vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, double alpha);
+ap.h:void vmove(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, double alpha);
+ap.h:void vmove(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex* vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, alglib::complex alpha);
+ap.h:void vmove(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, alglib::complex alpha);
+ap.h:void vadd(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n);
+ap.h:void vadd(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N);
+ap.h:void vadd(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, double alpha);
+ap.h:void vadd(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, double alpha);
+ap.h:void vadd(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, alglib::complex alpha);
+ap.h:void vadd(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, alglib::complex alpha);
+ap.h:void vsub(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n);
+ap.h:void vsub(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N);
+ap.h:void vsub(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, double alpha);
+ap.h:void vsub(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, double alpha);
+ap.h:void vsub(alglib::complex *vdst, ae_int_t stride_dst, const alglib::complex *vsrc, ae_int_t stride_src, const char *conj_src, ae_int_t n, alglib::complex alpha);
+ap.h:void vsub(alglib::complex *vdst, const alglib::complex *vsrc, ae_int_t N, alglib::complex alpha);
+ap.h:void vmul(alglib::complex *vdst, ae_int_t stride_dst, ae_int_t n, double alpha);
+ap.h:void vmul(alglib::complex *vdst, ae_int_t N, double alpha);
+ap.h:void vmul(alglib::complex *vdst, ae_int_t stride_dst, ae_int_t n, alglib::complex alpha);
+ap.h:void vmul(alglib::complex *vdst, ae_int_t N, alglib::complex alpha);
+ap.h:    void attach_to(alglib_impl::ae_vector *ptr);
+ap.h:    void allocate_own(ae_int_t size, alglib_impl::ae_datatype datatype);
+ap.h:    const alglib_impl::ae_vector* c_ptr() const;
+ap.h:    alglib_impl::ae_vector* c_ptr();
+ap.h:    void create(const char *s, alglib_impl::ae_datatype datatype);
+ap.h:    alglib_impl::ae_vector *p_vec;
+ap.h:    alglib_impl::ae_vector vec;
+ap.h:    boolean_1d_array(alglib_impl::ae_vector *p);
+ap.h:    integer_1d_array(alglib_impl::ae_vector *p);
+ap.h:    real_1d_array(alglib_impl::ae_vector *p);
+ap.h:    complex_1d_array(alglib_impl::ae_vector *p);
+ap.h:    const alglib::complex& operator()(ae_int_t i) const;
+ap.h:    alglib::complex& operator()(ae_int_t i);
+ap.h:    const alglib::complex& operator[](ae_int_t i) const;
+ap.h:    alglib::complex& operator[](ae_int_t i);
+ap.h:    void setcontent(ae_int_t iLen, const alglib::complex *pContent );
+ap.h:    alglib::complex* getcontent();
+ap.h:    const alglib::complex* getcontent() const;
+ap.h:    void attach_to(alglib_impl::ae_matrix *ptr);
+ap.h:    void allocate_own(ae_int_t rows, ae_int_t cols, alglib_impl::ae_datatype datatype);
+ap.h:    const alglib_impl::ae_matrix* c_ptr() const;
+ap.h:    alglib_impl::ae_matrix* c_ptr();
+ap.h:    void create(const char *s, alglib_impl::ae_datatype datatype);
+ap.h:    alglib_impl::ae_matrix *p_mat;
+ap.h:    alglib_impl::ae_matrix mat;
+ap.h:    boolean_2d_array(alglib_impl::ae_matrix *p);
+ap.h:    integer_2d_array(alglib_impl::ae_matrix *p);
+ap.h:    real_2d_array(alglib_impl::ae_matrix *p);
+ap.h:    complex_2d_array(alglib_impl::ae_matrix *p);
+ap.h:    const alglib::complex& operator()(ae_int_t i, ae_int_t j) const;
+ap.h:    alglib::complex& operator()(ae_int_t i, ae_int_t j);
+ap.h:    const alglib::complex* operator[](ae_int_t i) const;
+ap.h:    alglib::complex* operator[](ae_int_t i);
+ap.h:    void setcontent(ae_int_t irows, ae_int_t icols, const alglib::complex *pContent );
+ap.h:    alglib::real_2d_array trn;
+ap.h:    alglib::real_2d_array val;
+ap.h:    alglib::real_2d_array tst;
+ap.h:    alglib::real_2d_array all;
+ap.h:}//namespace alglib
+ap.h:namespace alglib_impl
+ap.h:void _ialglib_vzero(ae_int_t n, double *p, ae_int_t stride);
+ap.h:void _ialglib_vzero_complex(ae_int_t n, ae_complex *p, ae_int_t stride);
+ap.h:void _ialglib_vcopy(ae_int_t n, const double *a, ae_int_t stridea, double *b, ae_int_t strideb);
+ap.h:void _ialglib_vcopy_complex(ae_int_t n, const ae_complex *a, ae_int_t stridea, double *b, ae_int_t strideb, const char *conj);
+ap.h:void _ialglib_vcopy_dcomplex(ae_int_t n, const double *a, ae_int_t stridea, double *b, ae_int_t strideb, const char *conj);
+ap.h:void _ialglib_mcopyblock(ae_int_t m, ae_int_t n, const double *a, ae_int_t op, ae_int_t stride, double *b);
+ap.h:void _ialglib_mcopyunblock(ae_int_t m, ae_int_t n, const double *a, ae_int_t op, double *b, ae_int_t stride);
+ap.h:void _ialglib_mcopyblock_complex(ae_int_t m, ae_int_t n, const ae_complex *a, ae_int_t op, ae_int_t stride, double *b);
+ap.h:void _ialglib_mcopyunblock_complex(ae_int_t m, ae_int_t n, const double *a, ae_int_t op, ae_complex* b, ae_int_t stride);
+ap.h:ae_bool _ialglib_i_rmatrixgemmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_cmatrixgemmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_cmatrixrighttrsmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_rmatrixrighttrsmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_cmatrixlefttrsmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_rmatrixlefttrsmf(ae_int_t m,
+ap.h:ae_bool _ialglib_i_cmatrixsyrkf(ae_int_t n,
+ap.h:ae_bool _ialglib_i_rmatrixsyrkf(ae_int_t n,
+ap.h:ae_bool _ialglib_i_cmatrixrank1f(ae_int_t m,
+ap.h:ae_bool _ialglib_i_rmatrixrank1f(ae_int_t m,
+ap.h:namespace alglib_impl
+dataanalysis.h:#include "alglibinternal.h"
+dataanalysis.h:#include "alglibmisc.h"
+dataanalysis.h:namespace alglib_impl
+dataanalysis.h:namespace alglib
+dataanalysis.h:    alglib_impl::clusterizerstate* c_ptr();
+dataanalysis.h:    alglib_impl::clusterizerstate* c_ptr() const;
+dataanalysis.h:    alglib_impl::clusterizerstate *p_struct;
+dataanalysis.h:    alglib_impl::ahcreport* c_ptr();
+dataanalysis.h:    alglib_impl::ahcreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::ahcreport *p_struct;
+dataanalysis.h:    alglib_impl::kmeansreport* c_ptr();
+dataanalysis.h:    alglib_impl::kmeansreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::kmeansreport *p_struct;
+dataanalysis.h:    alglib_impl::decisionforest* c_ptr();
+dataanalysis.h:    alglib_impl::decisionforest* c_ptr() const;
+dataanalysis.h:    alglib_impl::decisionforest *p_struct;
+dataanalysis.h:    alglib_impl::dfreport* c_ptr();
+dataanalysis.h:    alglib_impl::dfreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::dfreport *p_struct;
+dataanalysis.h:    alglib_impl::linearmodel* c_ptr();
+dataanalysis.h:    alglib_impl::linearmodel* c_ptr() const;
+dataanalysis.h:    alglib_impl::linearmodel *p_struct;
+dataanalysis.h:    alglib_impl::lrreport* c_ptr();
+dataanalysis.h:    alglib_impl::lrreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::lrreport *p_struct;
+dataanalysis.h:    alglib_impl::modelerrors* c_ptr();
+dataanalysis.h:    alglib_impl::modelerrors* c_ptr() const;
+dataanalysis.h:    alglib_impl::modelerrors *p_struct;
+dataanalysis.h:    alglib_impl::multilayerperceptron* c_ptr();
+dataanalysis.h:    alglib_impl::multilayerperceptron* c_ptr() const;
+dataanalysis.h:    alglib_impl::multilayerperceptron *p_struct;
+dataanalysis.h:    alglib_impl::logitmodel* c_ptr();
+dataanalysis.h:    alglib_impl::logitmodel* c_ptr() const;
+dataanalysis.h:    alglib_impl::logitmodel *p_struct;
+dataanalysis.h:    alglib_impl::mnlreport* c_ptr();
+dataanalysis.h:    alglib_impl::mnlreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::mnlreport *p_struct;
+dataanalysis.h:    alglib_impl::mcpdstate* c_ptr();
+dataanalysis.h:    alglib_impl::mcpdstate* c_ptr() const;
+dataanalysis.h:    alglib_impl::mcpdstate *p_struct;
+dataanalysis.h:    alglib_impl::mcpdreport* c_ptr();
+dataanalysis.h:    alglib_impl::mcpdreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::mcpdreport *p_struct;
+dataanalysis.h:    alglib_impl::mlpensemble* c_ptr();
+dataanalysis.h:    alglib_impl::mlpensemble* c_ptr() const;
+dataanalysis.h:    alglib_impl::mlpensemble *p_struct;
+dataanalysis.h:    alglib_impl::mlpreport* c_ptr();
+dataanalysis.h:    alglib_impl::mlpreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::mlpreport *p_struct;
+dataanalysis.h:    alglib_impl::mlpcvreport* c_ptr();
+dataanalysis.h:    alglib_impl::mlpcvreport* c_ptr() const;
+dataanalysis.h:    alglib_impl::mlpcvreport *p_struct;
+dataanalysis.h:    alglib_impl::mlptrainer* c_ptr();
+dataanalysis.h:    alglib_impl::mlptrainer* c_ptr() const;
+dataanalysis.h:    alglib_impl::mlptrainer *p_struct;
+dataanalysis.h:on data analysis which is available at http://www.alglib.net/dataanalysis/
+dataanalysis.h:http://www.alglib.net/dataanalysis/ for more data).
+dataanalysis.h:http://www.alglib.net/dataanalysis/ for more data).
+dataanalysis.h:http://www.alglib.net/dataanalysis/ for more data).
+dataanalysis.h:namespace alglib_impl
+diffequations.h:#include "alglibinternal.h"
+diffequations.h:namespace alglib_impl
+diffequations.h:namespace alglib
+diffequations.h:    alglib_impl::odesolverstate* c_ptr();
+diffequations.h:    alglib_impl::odesolverstate* c_ptr() const;
+diffequations.h:    alglib_impl::odesolverstate *p_struct;
+diffequations.h:    alglib_impl::odesolverreport* c_ptr();
+diffequations.h:    alglib_impl::odesolverreport* c_ptr() const;
+diffequations.h:    alglib_impl::odesolverreport *p_struct;
+diffequations.h:namespace alglib_impl
+fasttransforms.h:#include "alglibinternal.h"
+fasttransforms.h:namespace alglib_impl
+fasttransforms.h:namespace alglib
+fasttransforms.h:namespace alglib_impl
+integration.h:#include "alglibinternal.h"
+integration.h:namespace alglib_impl
+integration.h:namespace alglib
+integration.h:    alglib_impl::autogkreport* c_ptr();
+integration.h:    alglib_impl::autogkreport* c_ptr() const;
+integration.h:    alglib_impl::autogkreport *p_struct;
+integration.h:    alglib_impl::autogkstate* c_ptr();
+integration.h:    alglib_impl::autogkstate* c_ptr() const;
+integration.h:    alglib_impl::autogkstate *p_struct;
+integration.h:namespace alglib_impl
+interpolation.h:#include "alglibinternal.h"
+interpolation.h:#include "alglibmisc.h"
+interpolation.h:namespace alglib_impl
+interpolation.h:namespace alglib
+interpolation.h:    alglib_impl::idwinterpolant* c_ptr();
+interpolation.h:    alglib_impl::idwinterpolant* c_ptr() const;
+interpolation.h:    alglib_impl::idwinterpolant *p_struct;
+interpolation.h:    alglib_impl::barycentricinterpolant* c_ptr();
+interpolation.h:    alglib_impl::barycentricinterpolant* c_ptr() const;
+interpolation.h:    alglib_impl::barycentricinterpolant *p_struct;
+interpolation.h:    alglib_impl::spline1dinterpolant* c_ptr();
+interpolation.h:    alglib_impl::spline1dinterpolant* c_ptr() const;
+interpolation.h:    alglib_impl::spline1dinterpolant *p_struct;
+interpolation.h:    alglib_impl::polynomialfitreport* c_ptr();
+interpolation.h:    alglib_impl::polynomialfitreport* c_ptr() const;
+interpolation.h:    alglib_impl::polynomialfitreport *p_struct;
+interpolation.h:    alglib_impl::barycentricfitreport* c_ptr();
+interpolation.h:    alglib_impl::barycentricfitreport* c_ptr() const;
+interpolation.h:    alglib_impl::barycentricfitreport *p_struct;
+interpolation.h:    alglib_impl::spline1dfitreport* c_ptr();
+interpolation.h:    alglib_impl::spline1dfitreport* c_ptr() const;
+interpolation.h:    alglib_impl::spline1dfitreport *p_struct;
+interpolation.h:    alglib_impl::lsfitreport* c_ptr();
+interpolation.h:    alglib_impl::lsfitreport* c_ptr() const;
+interpolation.h:    alglib_impl::lsfitreport *p_struct;
+interpolation.h:    alglib_impl::lsfitstate* c_ptr();
+interpolation.h:    alglib_impl::lsfitstate* c_ptr() const;
+interpolation.h:    alglib_impl::lsfitstate *p_struct;
+interpolation.h:    alglib_impl::pspline2interpolant* c_ptr();
+interpolation.h:    alglib_impl::pspline2interpolant* c_ptr() const;
+interpolation.h:    alglib_impl::pspline2interpolant *p_struct;
+interpolation.h:    alglib_impl::pspline3interpolant* c_ptr();
+interpolation.h:    alglib_impl::pspline3interpolant* c_ptr() const;
+interpolation.h:    alglib_impl::pspline3interpolant *p_struct;
+interpolation.h:    alglib_impl::rbfmodel* c_ptr();
+interpolation.h:    alglib_impl::rbfmodel* c_ptr() const;
+interpolation.h:    alglib_impl::rbfmodel *p_struct;
+interpolation.h:    alglib_impl::rbfreport* c_ptr();
+interpolation.h:    alglib_impl::rbfreport* c_ptr() const;
+interpolation.h:    alglib_impl::rbfreport *p_struct;
+interpolation.h:    alglib_impl::spline2dinterpolant* c_ptr();
+interpolation.h:    alglib_impl::spline2dinterpolant* c_ptr() const;
+interpolation.h:    alglib_impl::spline2dinterpolant *p_struct;
+interpolation.h:    alglib_impl::spline3dinterpolant* c_ptr();
+interpolation.h:    alglib_impl::spline3dinterpolant* c_ptr() const;
+interpolation.h:    alglib_impl::spline3dinterpolant *p_struct;
+interpolation.h:low. See http://www.alglib.net/interpolation/ for more information on this
+interpolation.h:namespace alglib_impl
+linalg.h:#include "alglibinternal.h"
+linalg.h:#include "alglibmisc.h"
+linalg.h:namespace alglib_impl
+linalg.h:namespace alglib
+linalg.h:    alglib_impl::matinvreport* c_ptr();
+linalg.h:    alglib_impl::matinvreport* c_ptr() const;
+linalg.h:    alglib_impl::matinvreport *p_struct;
+linalg.h:    alglib_impl::sparsematrix* c_ptr();
+linalg.h:    alglib_impl::sparsematrix* c_ptr() const;
+linalg.h:    alglib_impl::sparsematrix *p_struct;
+linalg.h:    alglib_impl::normestimatorstate* c_ptr();
+linalg.h:    alglib_impl::normestimatorstate* c_ptr() const;
+linalg.h:    alglib_impl::normestimatorstate *p_struct;
+linalg.h:void cmatrixgemm(const ae_int_t m, const ae_int_t n, const ae_int_t k, const alglib::complex alpha, const complex_2d_array &a, const ae_int_t ia, const ae_int_t ja, const ae_int_t optypea, const complex_2d_array &b, const ae_int_t ib, const ae_int_t jb, const ae_int_t optypeb, const alglib::complex beta, const complex_2d_array &c, const ae_int_t ic, const ae_int_t jc);
+linalg.h:void smp_cmatrixgemm(const ae_int_t m, const ae_int_t n, const ae_int_t k, const alglib::complex alpha, const complex_2d_array &a, const ae_int_t ia, const ae_int_t ja, const ae_int_t optypea, const complex_2d_array &b, const ae_int_t ib, const ae_int_t jb, const ae_int_t optypeb, const alglib::complex beta, const complex_2d_array &c, const ae_int_t ic, const ae_int_t jc);
+linalg.h:alglib::complex cmatrixludet(const complex_2d_array &a, const integer_1d_array &pivots, const ae_int_t n);
+linalg.h:alglib::complex cmatrixludet(const complex_2d_array &a, const integer_1d_array &pivots);
+linalg.h:alglib::complex cmatrixdet(const complex_2d_array &a, const ae_int_t n);
+linalg.h:alglib::complex cmatrixdet(const complex_2d_array &a);
+linalg.h:namespace alglib_impl
+optimization.h:#include "alglibinternal.h"
+optimization.h:#include "alglibmisc.h"
+optimization.h:namespace alglib_impl
+optimization.h:namespace alglib
+optimization.h:    alglib_impl::mincgstate* c_ptr();
+optimization.h:    alglib_impl::mincgstate* c_ptr() const;
+optimization.h:    alglib_impl::mincgstate *p_struct;
+optimization.h:    alglib_impl::mincgreport* c_ptr();
+optimization.h:    alglib_impl::mincgreport* c_ptr() const;
+optimization.h:    alglib_impl::mincgreport *p_struct;
+optimization.h:    alglib_impl::minbleicstate* c_ptr();
+optimization.h:    alglib_impl::minbleicstate* c_ptr() const;
+optimization.h:    alglib_impl::minbleicstate *p_struct;
+optimization.h:    alglib_impl::minbleicreport* c_ptr();
+optimization.h:    alglib_impl::minbleicreport* c_ptr() const;
+optimization.h:    alglib_impl::minbleicreport *p_struct;
+optimization.h:    alglib_impl::minlbfgsstate* c_ptr();
+optimization.h:    alglib_impl::minlbfgsstate* c_ptr() const;
+optimization.h:    alglib_impl::minlbfgsstate *p_struct;
+optimization.h:    alglib_impl::minlbfgsreport* c_ptr();
+optimization.h:    alglib_impl::minlbfgsreport* c_ptr() const;
+optimization.h:    alglib_impl::minlbfgsreport *p_struct;
+optimization.h:    alglib_impl::minqpstate* c_ptr();
+optimization.h:    alglib_impl::minqpstate* c_ptr() const;
+optimization.h:    alglib_impl::minqpstate *p_struct;
+optimization.h:    alglib_impl::minqpreport* c_ptr();
+optimization.h:    alglib_impl::minqpreport* c_ptr() const;
+optimization.h:    alglib_impl::minqpreport *p_struct;
+optimization.h:    alglib_impl::minlmstate* c_ptr();
+optimization.h:    alglib_impl::minlmstate* c_ptr() const;
+optimization.h:    alglib_impl::minlmstate *p_struct;
+optimization.h:    alglib_impl::minlmreport* c_ptr();
+optimization.h:    alglib_impl::minlmreport* c_ptr() const;
+optimization.h:    alglib_impl::minlmreport *p_struct;
+optimization.h:    alglib_impl::minasastate* c_ptr();
+optimization.h:    alglib_impl::minasastate* c_ptr() const;
+optimization.h:    alglib_impl::minasastate *p_struct;
+optimization.h:    alglib_impl::minasareport* c_ptr();
+optimization.h:    alglib_impl::minasareport* c_ptr() const;
+optimization.h:    alglib_impl::minasareport *p_struct;
+optimization.h:on optimization, which is available at http://www.alglib.net/optimization/
+optimization.h:namespace alglib_impl
+solvers.h:#include "alglibinternal.h"
+solvers.h:#include "alglibmisc.h"
+solvers.h:namespace alglib_impl
+solvers.h:namespace alglib
+solvers.h:    alglib_impl::densesolverreport* c_ptr();
+solvers.h:    alglib_impl::densesolverreport* c_ptr() const;
+solvers.h:    alglib_impl::densesolverreport *p_struct;
+solvers.h:    alglib_impl::densesolverlsreport* c_ptr();
+solvers.h:    alglib_impl::densesolverlsreport* c_ptr() const;
+solvers.h:    alglib_impl::densesolverlsreport *p_struct;
+solvers.h:    alglib_impl::linlsqrstate* c_ptr();
+solvers.h:    alglib_impl::linlsqrstate* c_ptr() const;
+solvers.h:    alglib_impl::linlsqrstate *p_struct;
+solvers.h:    alglib_impl::linlsqrreport* c_ptr();
+solvers.h:    alglib_impl::linlsqrreport* c_ptr() const;
+solvers.h:    alglib_impl::linlsqrreport *p_struct;
+solvers.h:    alglib_impl::lincgstate* c_ptr();
+solvers.h:    alglib_impl::lincgstate* c_ptr() const;
+solvers.h:    alglib_impl::lincgstate *p_struct;
+solvers.h:    alglib_impl::lincgreport* c_ptr();
+solvers.h:    alglib_impl::lincgreport* c_ptr() const;
+solvers.h:    alglib_impl::lincgreport *p_struct;
+solvers.h:    alglib_impl::nleqstate* c_ptr();
+solvers.h:    alglib_impl::nleqstate* c_ptr() const;
+solvers.h:    alglib_impl::nleqstate *p_struct;
+solvers.h:    alglib_impl::nleqreport* c_ptr();
+solvers.h:    alglib_impl::nleqreport* c_ptr() const;
+solvers.h:    alglib_impl::nleqreport *p_struct;
+solvers.h:namespace alglib_impl
+specialfunctions.h:#include "alglibinternal.h"
+specialfunctions.h:namespace alglib_impl
+specialfunctions.h:namespace alglib
+specialfunctions.h:namespace alglib_impl
+statistics.h:#include "alglibinternal.h"
+statistics.h:namespace alglib_impl
+statistics.h:namespace alglib
+statistics.h:namespace alglib_impl
