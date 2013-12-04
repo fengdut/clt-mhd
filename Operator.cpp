@@ -33,8 +33,8 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
 			double ddz	=	Z[ja]-Z[jb];
 			double ddr	=	R[ia]-R[ib];
 			oVR[i*mZ+j]	=	0 -	(iVPhi[i*mZ+ja]-iVPhi[i*mZ+jb])/ddz;
-			oVPhi[i*mZ+j]	=	(iVR[i*mZ+ja]-iVR[i*mZ+jb])/ddz - (iVZ[ia*mZ+j]-iVZ[ib*mZ+j])/ddr;
-			oVZ[i*mZ+j]	=	1/R[i]	* (R[ia]*iVPhi[ia]-R[ib]*iVPhi[ib])/ddr	-	0;
+			oVPhi[i*mZ+j]	=	(iVR[i*mZ+ja]-iVR[i*mZ+jb]) /ddz - (iVZ[ia*mZ+j]-iVZ[ib*mZ+j])/ddr;
+			oVZ[i*mZ+j]	=	1/R[i] * (R[ia]*iVPhi[ia*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr	-	0;
 		}
 	}
 	
@@ -48,14 +48,14 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
                 double ddr      =       R[ia]-R[ib];	
 		oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+ja]-iVPhi[i*mZ+j])/ddz;
                 oVPhi[i*mZ+j]   =       (iVR[i*mZ+ja]-iVR[i*mZ+j])/ddz - (iVZ[ia*mZ+j]-iVZ[ib*mZ+j])/ddr;
-                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia]-R[ib]*iVPhi[ib])/ddr -       0;
+                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr -       0;
 
 		j=mZ-1;	
 		int jb=j-1;
 		ddz	=	Z[j]-Z[jb];
 		oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+j]-iVPhi[i*mZ+jb])/ddz;
                 oVPhi[i*mZ+j]   =       (iVR[i*mZ+j]-iVR[i*mZ+jb])/ddz - (iVZ[ia*mZ+j]-iVZ[ib*mZ+j])/ddr;
-                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia]-R[ib]*iVPhi[ib])/ddr -       0;
+                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr -       0;
 
 	}
 		
@@ -69,14 +69,14 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
                 double ddr      =       R[ia]-R[i];
                 oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+ja]-iVPhi[i*mZ+jb])/ddz;
                 oVPhi[i*mZ+j]   =       (iVR[i*mZ+ja]-iVR[i*mZ+jb])/ddz - (iVZ[ia*mZ+j]-iVZ[i*mZ+j])/ddr;
-                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia]-R[i]*iVPhi[i])/ddr -       0;
+                oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia*mZ+j]-R[i]*iVPhi[i*mZ+j])/ddr -       0;
 		
 		i = mR-1;
 		int ib=i-1;
 		ddr	=R[i]-R[ib];
 		oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+ja]-iVPhi[i*mZ+jb])/ddz;
                 oVPhi[i*mZ+j]   =       (iVR[i*mZ+ja]-iVR[i*mZ+jb])/ddz - (iVZ[i*mZ+j]-iVZ[ib*mZ+j])/ddr;
-                oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i]-R[ib]*iVPhi[ib])/ddr -       0;
+                oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr -       0;
 	
 
 	}	
@@ -89,7 +89,7 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
         double ddr      =       R[ia]-R[i];
 	oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+j]-iVPhi[i*mZ+ja])/ddz;
         oVPhi[i*mZ+j]   =       (iVR[i*mZ+ja]-iVR[i*mZ+j])/ddz - (iVZ[ia*mZ+j]-iVZ[i*mZ+j])/ddr;
-        oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia]-R[i]*iVPhi[i])/ddr -       0;
+        oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia*mZ+j]-R[i]*iVPhi[i*mZ+j])/ddr -       0;
 	
 	i=mR-1;
 	j=0;
@@ -99,7 +99,7 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
         ddr      =       R[i]-R[ib];
 	oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+ja]-iVPhi[i*mZ+j])/ddz;
         oVPhi[i*mZ+j]   =       (iVR[i*mZ+ja]-iVR[i*mZ+j])/ddz - (iVZ[i*mZ+j]-iVZ[ib*mZ+j])/ddr;
-        oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i]-R[ib]*iVPhi[ib])/ddr -       0;
+        oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr -       0;
 	
 	i=0;
 	j=mZ-1;
@@ -109,7 +109,7 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
 	ddr	=	R[ia]-R[i];
         oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+j]-iVPhi[i*mZ+jb])/ddz;
         oVPhi[i*mZ+j]   =       (iVR[i*mZ+j]-iVR[i*mZ+jb])/ddz - (iVZ[ia*mZ+j]-iVZ[i*mZ+j])/ddr;
-        oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia]-R[i]*iVPhi[i])/ddr -       0;
+        oVZ[i*mZ+j]     =       1/R[i]  * (R[ia]*iVPhi[ia*mZ+j]-R[i]*iVPhi[i*mZ+j])/ddr -       0;
 
 	i=mR-1;
 	j=mZ-1;
@@ -119,7 +119,7 @@ void Operator::CurlEqu(double *iVR,double * iVZ, double * iVPhi, double *oVR, do
         ddr     =       R[i]-R[ib];
  	oVR[i*mZ+j]     =       0 -     (iVPhi[i*mZ+j]-iVPhi[i*mZ+jb])/ddz;
         oVPhi[i*mZ+j]   =       (iVR[i*mZ+j]-iVR[i*mZ+jb])/ddz - (iVZ[i*mZ+j]-iVZ[ib*mZ+j])/ddr;
-        oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i]-R[ib]*iVPhi[ib])/ddr -       0;
+        oVZ[i*mZ+j]     =       1/R[i]  * (R[i]*iVPhi[i*mZ+j]-R[ib]*iVPhi[ib*mZ+j])/ddr -       0;
 
 	
 	

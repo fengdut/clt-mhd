@@ -1,12 +1,12 @@
 #include"Mesh.h"
 #include<iostream>
 
-#include"meshconfig.h"
+#include"Meshconfig.h"
 #include<iostream>
 #include<fstream>
 #include"assert.h"
 #include"math.h"
-
+#include"H5Cpp.h"
 
 #define _USE_MATH_DEFINES
 
@@ -155,4 +155,23 @@ void Mesh::FindNeigh(double R, double Z,double *gridR, double *gridZ, int totalg
         }
 
 }
+void Mesh::WriteMeshHdf5(H5::H5File * pfile)
+{
+	using namespace H5;
+	
+	hsize_t	dimsf[1];
+	dimsf[0]=m_mR;
+	DataSpace dataspace(1,dimsf);
+	IntType datatype(PredType::NATIVE_DOUBLE);
+
+	DataSet datasetR	=	pfile->createDataSet("R",datatype,dataspace);
+	
+	dimsf[0]=m_mZ;
+	DataSpace dataspaceZ(1,dimsf);
+	DataSet datasetZ	=	pfile->createDataSet("Z",datatype,dataspaceZ);
+	datasetR.write(m_R,PredType::NATIVE_DOUBLE);
+	datasetZ.write(m_Z,PredType::NATIVE_DOUBLE);
+	
+}
+
 

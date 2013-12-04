@@ -1,6 +1,7 @@
 #ifndef _MESH_H
 #define _MESH_H
 
+#include"H5Cpp.h"
 class Mesh
 {
 public:
@@ -10,6 +11,7 @@ public:
         void Meshinfo();
         void GetmRmZ(int &mR, int &mZ);
         void WriteMesh();
+	void WriteMeshHdf5(H5::H5File *pfile);
 	void FindNeigh(double R, double Z, double *gridR, double *gridZ, int totalgrid, int *igrid);
 
 public:

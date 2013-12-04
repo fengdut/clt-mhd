@@ -23,6 +23,7 @@ public:
 	double * JZ;
 	double * JPhi;
 	double * Psi;
+
 };
 
 

@@ -1,6 +1,6 @@
 #include"Output.h"
 #include"stdlib.h"
-
+#include<iostream>
 
 Output::Output()
 {
@@ -20,7 +20,9 @@ Output::Output(char * hdf5name)
 void Output::Openhdf5()
 {
 	using namespace H5;	
+	using namespace std;	
 	m_h5file	=	new H5File(m_h5name,H5F_ACC_TRUNC);
+	cout<<"Open HDF5 file:"<<m_h5name<<endl;
 }
 
 Output::~Output()

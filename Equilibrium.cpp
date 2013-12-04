@@ -30,7 +30,7 @@ int Equilibrium::ReadNova()
 	}
 	string tmpstr;
 	char buf[500];
-	cout<<"Reading "<<nova_psi_xz<<endl;
+	cout<<"Reading NOVA file: "<<nova_psi_xz<<endl;
 	psixz.getline(buf,500,'\n');
 	double xplmin, xplmax, zplmax, arad, x_zero, xmagax, xmaj, xzmax, xatpi, xofset, a_ratio;
 	/*xplmin: Rmin
@@ -143,7 +143,9 @@ int Equilibrium::ReadNova()
         {
                 m_MHDequ.JPhi[i*m_mZ+j]= griddBRdZ[i*m_mZ+j]-griddBZdR[i*m_mZ+j];
         }
-
+	cout<<"Done NOVA data read and map"<<endl;
+	delete[] griddBRdZ;
+	delete[] griddBZdR;
 	delete[] R1D;
 	delete[] pPsi;
 	delete[] pq;
@@ -164,6 +166,7 @@ int Equilibrium::ReadNovaqpg(int iPsi,int & nPsi, double *pPsi, double *pq, doub
 {
 	using namespace std;
 	char q_p_g[]="q_p_g.dat";
+	cout<<"Reading NOVA file: "<<q_p_g<<endl;
         ifstream        qpg(q_p_g,ios::in);
         if(qpg.fail())
         {

@@ -4,7 +4,7 @@
 #include"assert.h"
 #include"math.h"
 #define _USE_MATH_DEFINES
-
+#include"Vector2d.h"
 MHDType::MHDType()
 {
 	m_NT	=0;

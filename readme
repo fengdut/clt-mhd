@@ -1,10 +1,22 @@
+
 Project website:
 https://code.google.com/p/clt-mhd/
-
 Version contral:
-git ()
+git
 
 Administrator:
+Feng Wang
 fengwang85@gmail.com
+
+This code is a c++ version of CLT-MHD, while the original CLT-MHD is a fortran code written by Wang Shen from 
+Zhejian University.
+
+
+ 
+Dependent library:
+alglib:
+http://www.alglib.net/download.php
+
+boost:
 
 
