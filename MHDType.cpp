@@ -66,7 +66,7 @@ void MHDType::SetNT(int NT)
 		delete[] Psi;
 	}
 	using namespace std;
-	cout<<"total grid:"<<NT<<endl;
+	cout<<"Total grid: "<<NT<<endl;
         m_NT    =       NT;
         rho     =       new double[NT];
 	

@@ -2,6 +2,8 @@
 #include"MHDType.h"
 #include"Equilibrium.h"
 #include"Output.h"
+#include"MHDEvolution.h"
+
 
 int main()
 {
@@ -14,6 +16,12 @@ int main()
 	equ.ReadNova();
 	equ.WriteEquHdf5(output.GetH5());
 	equ.WriteEqu();
+
+	double dt=0.01;
+	double gamma=1.5;
+	MHDEvolution mhd(&equ,dt,gamma);
+	mhd.GetRHS();
+	mhd.WriteMHDHdf5(output.GetH5());
 	return 0;
 }
 

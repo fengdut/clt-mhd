@@ -17,7 +17,10 @@ public:
 
 	void WriteEqu();
 	void WriteEquHdf5(H5::H5File * pfile);
-
+	Mesh* GetMesh()
+		{return &m_mesh;};
+	MHDType * GetEqu()
+		{return &m_MHDequ;};
 private:
 	double m_Raxis;
 	int m_mPsi;

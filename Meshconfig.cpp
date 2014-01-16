@@ -34,8 +34,7 @@ int getmeshconfig(int ac, char * av[],int& nR, int& nZ, int& nPhi)
             ("version,v", "print version string")
             ("help", "produce help message")
             ("config,c", po::value<string>(&config_file)->default_value("mesh_config.cfg"),
-                  "name of a file of a configuration.")
-            ;
+                  "name of a file of a configuration." );
     
         // Declare a group of options that will be 
         // allowed both on command line and in

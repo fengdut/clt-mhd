@@ -55,7 +55,7 @@ void InterData2DPsi(const double *psi1d,const double *v1d, const int N,
 	real_2d_array xy;
 	idwinterpolant idw;
 	xy.setlength(N,2);
-	double r=0.05;
+	double r=0.01;
 	for(int i=0;i<N;i++)
 	{
 		xy(i,0)=psi1d[i];

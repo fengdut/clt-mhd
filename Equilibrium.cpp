@@ -5,6 +5,7 @@
 #include"Operator.h"
 #include"H5Cpp.h"
 #include"Vector2d.h"
+#include"math.h"
 
 Equilibrium::Equilibrium()
 {
@@ -33,17 +34,9 @@ int Equilibrium::ReadNova()
 	cout<<"Reading NOVA file: "<<nova_psi_xz<<endl;
 	psixz.getline(buf,500,'\n');
 	double xplmin, xplmax, zplmax, arad, x_zero, xmagax, xmaj, xzmax, xatpi, xofset, a_ratio;
-	/*xplmin: Rmin
-	xplmax: Rmax
-	zplmax: Zmax
-	arad: a
-	x_zero: R0
-	xmagax: R(maxis) magnetic axis
-	xmaj: ~R0
-	xzmax: R(Zmax)
-	xatpi: R(theta=Pi)
-	xofset: axis ofset of magnetic axis
-	a_ratio: R0/a		*/
+	/*xplmin: Rmin,		xplmax: Rmax, 	zplmax: Zmax, 	arad: a, x_zero: R0
+	  xmagax: R(maxis) magnetic axis, 	xmaj: ~R0, 	xzmax: R(Zmax)
+	  xatpi:  R(theta=Pi), 	xofset: axis ofset of magnetic axis, a_ratio: R0/a		*/
 	
 	psixz>>xplmin>>xplmax>>zplmax>>arad>>x_zero>>xmagax>>xmaj>>xzmax>>xatpi>>xofset>>a_ratio;
 	m_Raxis	=	xmagax;	
@@ -51,7 +44,9 @@ int Equilibrium::ReadNova()
 		<<"R(theta=Pi)\t"<<"xofset\t"<<"R0/a"<<endl;	
 	cout<<xplmin<<'\t'<<xplmax<<'\t'<<zplmax<<'\t'<<arad<<'\t'<<x_zero<<'\t'<<xmagax<<'\t'<<xmaj<<'\t'<<xzmax
 		<<'\t'<<xatpi<<'\t'<<xofset<<'\t'<<a_ratio<<endl;
+	
 	m_mesh.CreateMesh(xplmin,xplmax,-1*zplmax,zplmax);
+	
 	m_mesh.Meshinfo();
 	int ipsi,itheta;
 	int ipsi0,ipsi1,itheta0,itheta1;
@@ -116,14 +111,15 @@ int Equilibrium::ReadNova()
 		m_MHDequ.BR[i*m_mZ+j]=m_MHDequ.BR[i*m_mZ+j]*-1;
 	InterData2D(R,Z,BZ,totalgrid+1,m_mesh.m_R,m_mesh.m_Z,m_mR,m_mZ,m_MHDequ.BZ);	
 	
-	double *R1D	=	new double[nPsi];
-	R1D[0]	=	xmagax;
-	for(int i=1;i<nPsi;i++)
+	double *prho	=	new double[nPsi];
+	for(int i=0;i<nPsi;i++)
 	{
-		R1D[i]=R[(i-1)*ntheta];
+		prho[i]=exp(-0.5*(double)(i*i)/(double)(nPsi*nPsi));
 	}
 	InterData2DPsi(pPsi,pP,nPsi,m_mR,m_mZ,m_MHDequ.Psi,m_MHDequ.p);
 	InterData2DPsi(pPsi,pg,nPsi,m_mR,m_mZ,m_MHDequ.Psi,m_MHDequ.BPhi);
+	InterData2DPsi(pPsi,prho,nPsi,m_mR,m_mZ,m_MHDequ.Psi,m_MHDequ.rho);
+	
 	//g to Bphi
 	for(int i=0;i<m_mR;i++)
 	for(int j=0;j<m_mZ;j++)
@@ -144,9 +140,12 @@ int Equilibrium::ReadNova()
                 m_MHDequ.JPhi[i*m_mZ+j]= griddBRdZ[i*m_mZ+j]-griddBZdR[i*m_mZ+j];
         }
 	cout<<"Done NOVA data read and map"<<endl;
+	
+	//set rho
+	
 	delete[] griddBRdZ;
 	delete[] griddBZdR;
-	delete[] R1D;
+	delete[] prho;
 	delete[] pPsi;
 	delete[] pq;
 	delete[] pP;
@@ -228,16 +227,17 @@ void Equilibrium::WriteEquHdf5(H5::H5File *pfile)
 	dimsf[1]=m_mZ;
 	DataSpace dataspace(2,dimsf);
 	IntType datatype(PredType::NATIVE_DOUBLE);
-
-	DataSet drho = pfile->createDataSet("rho",datatype,dataspace);
-	DataSet dp   = pfile->createDataSet("p",datatype,dataspace);
-	DataSet dBR  = pfile->createDataSet("BR",datatype,dataspace);
-	DataSet dBZ  = pfile->createDataSet("BZ",datatype,dataspace);
-	DataSet dBPhi= pfile->createDataSet("BPhi",datatype,dataspace);
-	DataSet dJR  = pfile->createDataSet("JR",datatype,dataspace);
-	DataSet dJZ  = pfile->createDataSet("JZ",datatype,dataspace);
-	DataSet dJPhi= pfile->createDataSet("JPhi",datatype,dataspace);
-	DataSet dpsi = pfile->createDataSet("Psi",datatype,dataspace);
+	
+	pfile->createGroup("/Equ");
+	DataSet drho = pfile->createDataSet("/Equ/rho",datatype,dataspace);
+	DataSet dp   = pfile->createDataSet("/Equ/p",datatype,dataspace);
+	DataSet dBR  = pfile->createDataSet("/Equ/BR",datatype,dataspace);
+	DataSet dBZ  = pfile->createDataSet("/Equ/BZ",datatype,dataspace);
+	DataSet dBPhi= pfile->createDataSet("/Equ/BPhi",datatype,dataspace);
+	DataSet dJR  = pfile->createDataSet("/Equ/JR",datatype,dataspace);
+	DataSet dJZ  = pfile->createDataSet("/Equ/JZ",datatype,dataspace);
+	DataSet dJPhi= pfile->createDataSet("/Equ/JPhi",datatype,dataspace);
+	DataSet dpsi = pfile->createDataSet("/Equ/Psi",datatype,dataspace);
 
 	drho.write(m_MHDequ.rho,PredType::NATIVE_DOUBLE);
 	dp.write(m_MHDequ.p,PredType::NATIVE_DOUBLE);
@@ -250,5 +250,4 @@ void Equilibrium::WriteEquHdf5(H5::H5File *pfile)
 	dpsi.write(m_MHDequ.Psi,PredType::NATIVE_DOUBLE);		
 		
 }
-
 

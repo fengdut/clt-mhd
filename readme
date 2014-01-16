@@ -16,7 +16,19 @@ Zhejian University.
 Dependent library:
 alglib:
 http://www.alglib.net/download.php
-
 boost:
+http://www.boost.org/
+
+
+Input files:
+Mesh configuration: mesh_config.cfg
+Equilibrim profiles: psi_xz.dat, q_p_g.dat
+
+Output files:
+
+
+
+
+
 
 

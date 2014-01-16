@@ -374,17 +374,24 @@ public:
    {
 		memset(m_2DVector[0],0,sizeof(T)*m_dimCol*m_dimRow);
    }
-	int GetRowNo()
-	{
+	
+   void SetValue(T &d)
+   {
+	for(int i=0;i<m_dimRow;i++)
+		for(int j=0;j<m_dimCol;j++)
+			m_2DVector[i][j]=d;
+   }
+   int GetRowNo()
+   {
 		return m_dimRow;
-	}
-	int GetColNo()
-	{
+   }
+   int GetColNo()
+   {
 		return m_dimCol;
-	}
+   }
 
-	void DataOut(std::ostream & out)
-	{
+   void DataOut(std::ostream & out)
+   {
 
 		out.precision(8);
 		for(int i=0;i<m_dimRow;i++)
@@ -397,16 +404,16 @@ public:
 		}
 
 	
-	}
+    }
 
-	T** &Get2DVector()
-	{
+    T** &Get2DVector()
+    {
 		return m_2DVector;
-	}
+    }
 
-	int m_dimRow;
-	int m_dimCol;
-	T** m_2DVector;
+    int m_dimRow;
+    int m_dimCol;
+    T** m_2DVector;
 
 
 };

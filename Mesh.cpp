@@ -27,8 +27,8 @@ Mesh::Mesh()
         char **av=0;
 
         getmeshconfig(tac, av,m_mR,m_mZ,m_mPhi);
-        assert(m_mR>1&&m_mR<500);
-        assert(m_mZ>1&&m_mZ<500);
+        assert(m_mR>1&&m_mR<1024);
+        assert(m_mZ>1&&m_mZ<1024);
         assert(m_mPhi>1&& m_mPhi<100);
 
         m_R = new double[m_mR];
@@ -169,9 +169,14 @@ void Mesh::WriteMeshHdf5(H5::H5File * pfile)
 	dimsf[0]=m_mZ;
 	DataSpace dataspaceZ(1,dimsf);
 	DataSet datasetZ	=	pfile->createDataSet("Z",datatype,dataspaceZ);
+	
+	dimsf[0]=m_mPhi;
+	DataSpace dataspacePhi(1,dimsf);
+	DataSet datasetPhi	=	pfile->createDataSet("Phi",datatype,dataspacePhi);
 	datasetR.write(m_R,PredType::NATIVE_DOUBLE);
 	datasetZ.write(m_Z,PredType::NATIVE_DOUBLE);
-	
+	datasetPhi.write(m_Phi,PredType::NATIVE_DOUBLE);
+		
 }
 
 

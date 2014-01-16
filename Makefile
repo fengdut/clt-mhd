@@ -18,9 +18,14 @@ LIBA =
 SRCS := $(wildcard *.cpp)
 OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
-all:$(PRGM)
+all : alglib $(PRGM)
 
-$(PRGM):$(OBJS) 
+
+
+
+
+$(PRGM):$(OBJS)
+	cd alglib/src; make 
 	$(LINKCC) $(OBJS) $(LIBA) $(HDF5L) $(ALGLIB)/*.o -o $(PRGM)
 
 %.o:%.cpp
@@ -28,7 +33,7 @@ $(PRGM):$(OBJS)
 
 .PHONY:clean
 clean:
-	rm -f $(OBJS) $(PRGM)
+	rm -f $(OBJS) $(PRGM) $(ALGLIB)/src/*.o
 
 explain:
 	@echo "The information represents in the program:"
